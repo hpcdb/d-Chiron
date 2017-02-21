@@ -12,7 +12,7 @@ In this repository, you find what is necessary to execute d-Chiron either in a c
 - [Data provenance queries](queries)
 - [Risers Fatigue Analysis synthetic workflow](rfa-synthetic)
     - [RFA activites implementation](rfa-synthetic/rfa-activities)
-- [Spark implementation of RFA](rfa-synthetic/rfa-spark-project)
+- [Spark implementation of RFA](rfa-synthetic/rfa-spark)
 - [Chiron](chiron)
 
 # Team
