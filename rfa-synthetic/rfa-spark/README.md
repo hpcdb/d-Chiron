@@ -1,8 +1,8 @@
-# Risers Fatigue Analysis Syntehtic - Spark
+# Risers Fatigue Analysis Synthetic - Spark
 
 ## How to Run
 ### Dependencies:
-- [Apache Spar Cluster](https://spark.apache.org/docs/1.1.0/cluster-overview)
+- [Apache Spark Cluster](https://spark.apache.org/docs/1.1.0/cluster-overview)
 - [Python2](https://www.python.org/downloads/)
 - [Bash](https://www.gnu.org/software/bash/)
 
