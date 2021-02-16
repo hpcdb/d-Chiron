@@ -65,7 +65,7 @@ We will use the [Risers Fatigue Analysis workflow](../rfa-synthetic) as example.
     $ vi rfa-dchiron-wf.xml
     ```
     - Replace `full/to/path/repositoryroot/` occurrences with the full path to this repository root directory
-
+    
 3. Edit the [machines.conf](../rfa-synthetic/rfa-dchiron/machines.conf) file with nodes hostnames, ports, and ranks for MPI initialization:
     
     ```sh
@@ -81,6 +81,27 @@ We will use the [Risers Fatigue Analysis workflow](../rfa-synthetic) as example.
     node1-hostname@20348@0
     node2-hostname@20348@1
     ```
+
+4. Edit the [input.dataset](../rfa-synthetic/rfa-dchiron/exp/input.dataset) file to adjust the amount of data and parallel tasks your workflow will process. This is a CSV file. Each row in this dataset represents one subgraph of task executions of an RFA run.
+The meaning of each field is as follows.
+
+    - `ID`: identifier of the subgraph
+    - `SPLITMAP`: factor that controls the average cost of each *Data Gathering* task execution.
+    - `SPLITFACTOR`: factor that controls the amount of parallel tasks that will be generated (at the *Data Gathering* activity).
+    - `MAP1` and `MAP2`: factors that control the average cost of each *Preprocessing* and *Stress Analysis* task execution.
+    - `FILTER1` and `FILTER2`: factors that control the average cost of each *Stress Critical Case Selection* and *Curvature Critical Case Selection* task execution, respectively.
+    - `F1` and `F2`: factors that control the retention of tuples (in the dataflow) in the *Stress Critical Case Selection* and *Curvature Critical Case Selection* activities, respectively.
+    - `REDUCE`: factor that controls the average cost of each *Compress Results* task execution.
+    - `REDUCEFACTOR`: factor that controls the amount of resulting tuples after going through the reduce (*Compress Results*) activity.
+    <br/>
+
+
+    For the theoretical reference behind the choices for these factors, please see [this reference](https://hal-lirmm.ccsd.cnrs.fr/lirmm-00749968/document):
+    ```
+    Fernando Chirigati, Vitor Silva, Eduardo Ogasawara, Jonas Dias, Fabio Porto, et al. Evaluating Parameter Sweep Workflows in High Performance Computing. SWEET'12: International Workshop on Scalable Workflow Enactment Engines and Technologies, 2012, Scottsdale, Arizona, United States. pp.10.
+    ```
+
+    The source code for the Risers Fatigue Analysis workflow tasks generator is available [here](../rfa-synthetic/rfa-activities).
 
 ## Run
 
