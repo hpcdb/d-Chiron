@@ -64,9 +64,9 @@ We will use the [Risers Fatigue Analysis workflow](../rfa-synthetic) as example.
     ```sh
     $ vi rfa-dchiron-wf.xml
     ```
-    - Replace `full/to/path/repositoryroot/` ocurrences with the full path to this repository root directory
+    - Replace `full/to/path/repositoryroot/` occurrences with the full path to this repository root directory
 
-3. Edit the [machines.conf](../rfa-synthetic/rfa-dchiron) file with nodes hostnames, ports, and ranks for MPI initialization:
+3. Edit the [machines.conf](../rfa-synthetic/rfa-dchiron/machines.conf) file with nodes hostnames, ports, and ranks for MPI initialization:
     
     ```sh
     $ vi machines.conf
