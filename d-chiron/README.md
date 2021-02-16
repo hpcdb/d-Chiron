@@ -52,19 +52,21 @@
 
 ## Workflow Configuration
 
-1. Change working directory to rfa-synthetic/rfa-dchiron:
+We will use the [Risers Fatigue Analysis workflow](../rfa-synthetic) as example.
+
+1. Change working directory to `rfa-synthetic/rfa-dchiron`:
 
     ```sh
     $ cd ../rfa-synthetic/rfa-dchiron
     ```
-- [Use of the XML file from RFA workflow](../rfa-synthetic/rfa-dchiron/rfa-dchiron-wf.xml):
+2. [Use the XML file from RFA workflow](../rfa-synthetic/rfa-dchiron/rfa-dchiron-wf.xml):
     
     ```sh
     $ vi rfa-dchiron-wf.xml
     ```
     - Replace `full/to/path/repositoryroot/` ocurrences with the full path to this repository root directory
 
-- Edit machines.conf with nodes hostnames, ports, and ranks for MPI initialization:
+3. Edit the [machines.conf](../rfa-synthetic/rfa-dchiron) file with nodes hostnames, ports, and ranks for MPI initialization:
     
     ```sh
     $ vi machines.conf
@@ -81,7 +83,8 @@
     ```
 
 ## Run
-Scripts to submit workflow execution using d-Chiron can be found in ....
+
+Still using the [Risers Fatigue Analysis workflow in d-Chiron](../rfa-synthetic/rfa-dchiron/) as example, follow the next commands to run the workflow. The scripts used in this section are [here](../rfa-synthetic/rfa-dchiron).
 
 1. Start MySQL Cluster instances:
 
@@ -102,6 +105,8 @@ Scripts to submit workflow execution using d-Chiron can be found in ....
 
 ## Monitor
 
+Optionally, you can monitor the execution by specifying periodic queries in the workflow database.
+
 1. Add new monitoring queries before or during workflow execution, informing the monitoring interval. Example:
 
     ```sql
@@ -117,9 +122,11 @@ Scripts to submit workflow execution using d-Chiron can be found in ....
     $ java -jar Monitor.jar --start
     ```
 	
-1. For each monitoring query, the result will be stored in `UMonitoringResult` during workflow execution at each time interval defined for the query. 
+1. For each monitoring query registered in the `UMonitoring` table, the result set is stored in `UMonitoringResult` table during workflow execution at each time interval defined for the query. 
 	
 ## Steer
+
+If you need, d-Chiron allows you to steer the execution by adapting the workflow data at runtime.
 
 #### Removing slices
 
@@ -128,5 +135,5 @@ Scripts to submit workflow execution using d-Chiron can be found in ....
 2. Then, run a steering query to cut off the slice:
 
     ```bash
-    $ java -jar --xml=rfa-dchiron-wf.xml --user=peter --type=REMOVE_TUPLES --tasksquery="select  nexttaskid  from wf1.ogatherdatafromrisers where map1 > 70000" 
+    $ java -jar Steer.jar --xml=rfa-dchiron-wf.xml --user=peter --type=REMOVE_TUPLES --tasksquery="select  nexttaskid  from wf1.ogatherdatafromrisers where map1 > 70000" 
     ````
