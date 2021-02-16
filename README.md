@@ -8,7 +8,7 @@ In this repository, you find what is necessary to execute d-Chiron either in a c
 - [d-Chiron](d-chiron) 
 - [Data models](data-models) 
     - [PROV-Wf-extended data model](data-models/PROV-Wf-extended.png)
-    - [d-Chiron's Relational schema](data-models/relational-database-schema-dChiron-RFA.png) 
+    - [d-Chiron Relational schema](data-models/relational-database-schema-dChiron-RFA.png) 
 - [Workflow provenance queries](queries)
 - [Risers Fatigue Analysis synthetic workflow](rfa-synthetic)
     - [RFA activites implementation](rfa-synthetic/rfa-activities)
